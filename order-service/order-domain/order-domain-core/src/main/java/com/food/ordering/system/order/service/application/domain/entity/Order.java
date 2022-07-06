@@ -103,12 +103,12 @@ public class Order extends AggregateRoot<OrderId> {
 
     private void validateItemPrice(OrderItem orderItem) {
         if(!orderItem.isPriceValid()) {
-            throw new DomainException("Order iem price: " + orderItem.getPrice().getAmount() + " is not valid");
+            throw new OrderDomainException("Order item price: " + orderItem.getPrice().getAmount() + " is not valid");
         }
     }
 
     private void validateTotalPrice() {
-        if(price == null || price.isGreaterThanZero()) {
+        if(price == null || !price.isGreaterThanZero()) {
             throw new OrderDomainException("Total price must be greater than zero");
         }
     }
