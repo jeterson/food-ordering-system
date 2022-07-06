@@ -1,18 +1,18 @@
-package com.food.ordering.system.order.service.domain.mapper;
+package com.food.ordering.system.order.service.application.domain.mapper;
 
 import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.ProductId;
 import com.food.ordering.system.domain.valueobject.RestaurantId;
-import com.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
-import com.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
-import com.food.ordering.system.order.service.domain.dto.create.OrderAddress;
-import com.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
-import com.food.ordering.system.order.service.domain.entity.Order;
-import com.food.ordering.system.order.service.domain.entity.OrderItem;
-import com.food.ordering.system.order.service.domain.entity.Product;
-import com.food.ordering.system.order.service.domain.entity.Restaurant;
-import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
+import com.food.ordering.system.order.service.application.domain.dto.track.TrackOrderResponse;
+import com.food.ordering.system.order.service.application.domain.entity.Order;
+import com.food.ordering.system.order.service.application.domain.entity.OrderItem;
+import com.food.ordering.system.order.service.application.domain.entity.Product;
+import com.food.ordering.system.order.service.application.domain.entity.Restaurant;
+import com.food.ordering.system.order.service.application.domain.valueobject.StreetAddress;
+import com.food.ordering.system.order.service.application.domain.dto.create.CreateOrderCommand;
+import com.food.ordering.system.order.service.application.domain.dto.create.CreateOrderResponse;
+import com.food.ordering.system.order.service.application.domain.dto.create.OrderAddress;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -49,7 +49,7 @@ public class OrderDataMapper {
     }
 
     private List<OrderItem> orderItemsToOrderItemEntities(
-            List<com.food.ordering.system.order.service.domain.dto.create.OrderItem> items) {
+            List<com.food.ordering.system.order.service.application.domain.dto.create.OrderItem> items) {
        return items.stream().map(item ->
                OrderItem.builder()
                        .product(new Product(new ProductId(item.getProductId())))
